@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   EdRAM Design System — Tailwind v4 Theme (Dark/Light)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Theme Variables (Dark Mode - Default) */
+:root {
+  --ds-bg:       #0a0e1a;
+  --ds-surface:  #111827;
+  --ds-elevated: #1a2235;
+  --ds-border:   #374151;
+  --ds-gold:     #c9a84c;
+  --ds-gold-muted: #b8993f;
+  --ds-text:     #f1f5f9;
+  --ds-muted:    #9ca3af;
+  --ds-hover:    #1f2937;
+}
+
+/* Light Mode */
+:root.light {
+  --ds-bg:       #f8fafc;
+  --ds-surface:  #ffffff;
+  --ds-elevated: #f1f5f9;
+  --ds-border:   #e2e8f0;
+  --ds-gold:     #b8860b;
+  --ds-gold-muted: #a67c00;
+  --ds-text:     #0f172a;
+  --ds-muted:    #64748b;
+  --ds-hover:    #f1f5f9;
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Tailwind colors referencing CSS variables for dynamic theming */
+  --color-ds-bg:       var(--ds-bg);
+  --color-ds-surface:  var(--ds-surface);
+  --color-ds-elevated: var(--ds-elevated);
+  --color-ds-border:   var(--ds-border);
+  --color-ds-gold:     var(--ds-gold);
+  --color-ds-text:     var(--ds-text);
+  --color-ds-muted:    var(--ds-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Base Resets
+   ═══════════════════════════════════════════════════════════ */
+
+html { font-size: 14px; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ds-bg);
+  color: var(--ds-text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Card Components
+   ═══════════════════════════════════════════════════════════ */
+
+.card {
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  background: var(--ds-elevated);
+  border-color: var(--ds-muted);
+}
+
+.card-gold {
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-left: 4px solid var(--ds-gold);
+  border-radius: 12px;
+  padding: 24px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Badge Components
+   ═══════════════════════════════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.badge-ow   { background: #064e3b; color: #34d399; border-color: #065f46; }
+.badge-n    { background: #1f2937; color: #9ca3af; border-color: #374151; }
+.badge-uw   { background: #450a0a; color: #f87171; border-color: #7f1d1d; }
+
+.badge-tier1 { background: #1f2937; color: #9ca3af; border-color: #374151; }
+.badge-tier2 { background: #1e3a5f; color: #60a5fa; border-color: #1d4ed8; }
+.badge-tier3 { background: #422006; color: #fbbf24; border-color: #92400e; }
+
+/* Stance badges */
+.stance-risk-on          { background: #451a03; color: #fbbf24; border-color: #92400e; }
+.stance-defensive        { background: #172554; color: #93c5fd; border-color: #1d4ed8; }
+.stance-cautious-off     { background: #042f2e; color: #5eead4; border-color: #0d9488; }
+.stance-opportunistic    { background: #2e1065; color: #c4b5fd; border-color: #7c3aed; }
+.stance-balanced         { background: #1f2937; color: #d1d5db; border-color: #4b5563; }
+.stance-selective-on     { background: #431407; color: #fdba74; border-color: #c2410c; }
+
+/* ═══════════════════════════════════════════════════════════
+   Country Badges
+   ═══════════════════════════════════════════════════════════ */
+
+.country-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  min-width: 28px;
+}
+
+.country-FR { background: #1e3a8a; color: #fff; }
+.country-DE { background: #1f2937; color: #fbbf24; }
+.country-CH { background: #991b1b; color: #fff; }
+.country-IT { background: #065f46; color: #fff; }
+.country-ES { background: #991b1b; color: #fbbf24; }
+
+/* ═══════════════════════════════════════════════════════════
+   Logo Initials (competitor cards)
+   ═══════════════════════════════════════════════════════════ */
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.logo-gold    { background: var(--ds-gold); color: var(--ds-bg); }
+.logo-blue    { background: #1e3a8a; color: #93c5fd; }
+.logo-emerald { background: #064e3b; color: #6ee7b7; }
+.logo-purple  { background: #4c1d95; color: #c4b5fd; }
+.logo-red     { background: #7f1d1d; color: #fca5a5; }
+.logo-orange  { background: #7c2d12; color: #fdba74; }
+.logo-cyan    { background: #164e63; color: #67e8f9; }
+
+/* ═══════════════════════════════════════════════════════════
+   Data Tables
+   ═══════════════════════════════════════════════════════════ */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table th {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ds-muted);
+  padding: 12px 10px;
+  background: var(--ds-bg);
+  border-bottom: 1px solid var(--ds-border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--ds-elevated);
+}
+
+.data-table tbody tr:hover td {
+  background: var(--ds-elevated);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Utility Classes
+   ═══════════════════════════════════════════════════════════ */
+
+.text-gold { color: var(--ds-gold); }
+.text-muted { color: var(--ds-muted); }
+.bg-surface { background: var(--ds-surface); }
+.bg-elevated { background: var(--ds-elevated); }
+.border-subtle { border-color: var(--ds-border); }
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--ds-surface); }
+::-webkit-scrollbar-thumb { background: var(--ds-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ds-muted); }
+
+/* Light mode badge adjustments */
+:root.light .badge-tier1 { background: #e5e7eb; color: #4b5563; border-color: #d1d5db; }
+:root.light .badge-tier2 { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; }
+:root.light .badge-tier3 { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+
+:root.light .stance-risk-on          { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+:root.light .stance-defensive        { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; }
+:root.light .stance-cautious-off     { background: #ccfbf1; color: #0d9488; border-color: #5eead4; }
+:root.light .stance-opportunistic    { background: #ede9fe; color: #7c3aed; border-color: #c4b5fd; }
+:root.light .stance-balanced         { background: #f3f4f6; color: #4b5563; border-color: #d1d5db; }
+:root.light .stance-selective-on     { background: #ffedd5; color: #c2410c; border-color: #fdba74; }
+
+:root.light .country-FR { background: #3b82f6; }
+:root.light .country-DE { background: #374151; }
+:root.light .country-CH { background: #dc2626; }
+:root.light .country-IT { background: #059669; }
+:root.light .country-ES { background: #dc2626; }
+
+:root.light .logo-blue    { background: #dbeafe; color: #1d4ed8; }
+:root.light .logo-emerald { background: #d1fae5; color: #059669; }
+:root.light .logo-purple  { background: #ede9fe; color: #7c3aed; }
+:root.light .logo-red     { background: #fee2e2; color: #dc2626; }
+:root.light .logo-orange  { background: #ffedd5; color: #ea580c; }
+:root.light .logo-cyan    { background: #cffafe; color: #0891b2; }
