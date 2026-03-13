@@ -103,6 +103,13 @@ body {
 .badge-n    { background: #1f2937; color: #9ca3af; border-color: #374151; }
 .badge-uw   { background: #450a0a; color: #f87171; border-color: #7f1d1d; }
 
+.badge-bullish { background: #052e16; color: #6ee7b7; border-color: #065f46; }
+.badge-neutral { background: #1f2937; color: #cbd5e1; border-color: #475569; }
+.badge-bearish { background: #450a0a; color: #fecaca; border-color: #7f1d1d; }
+
+.status-aligned { color: #6ee7b7; font-size: 12px; font-weight: 500; }
+.status-diverge { color: #fca5a5; font-size: 12px; font-weight: 500; }
+
 .badge-tier1 { background: #1f2937; color: #9ca3af; border-color: #374151; }
 .badge-tier2 { background: #1e3a5f; color: #60a5fa; border-color: #1d4ed8; }
 .badge-tier3 { background: #422006; color: #fbbf24; border-color: #92400e; }
@@ -191,6 +198,11 @@ body {
   background: var(--ds-elevated);
 }
 
+/* Macro panel sentiment segments */
+.macro-seg-bearish { background: #450a0a; color: #fecaca; }
+.macro-seg-neutral { background: var(--ds-elevated); color: var(--ds-muted); }
+.macro-seg-bullish { background: #052e16; color: #6ee7b7; }
+
 /* ═══════════════════════════════════════════════════════════
    Utility Classes
    ═══════════════════════════════════════════════════════════ */
@@ -216,6 +228,21 @@ body {
 :root.light .badge-tier1 { background: #e5e7eb; color: #4b5563; border-color: #d1d5db; }
 :root.light .badge-tier2 { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; }
 :root.light .badge-tier3 { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+
+:root.light .badge-ow { background: #dcfce7; color: #166534; border-color: #86efac; }
+:root.light .badge-n  { background: #e2e8f0; color: #334155; border-color: #cbd5e1; }
+:root.light .badge-uw { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+
+:root.light .badge-bullish { background: #dcfce7; color: #166534; border-color: #86efac; }
+:root.light .badge-neutral { background: #e2e8f0; color: #334155; border-color: #cbd5e1; }
+:root.light .badge-bearish { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+
+:root.light .macro-seg-bearish { background: #ef4444; color: #ffffff; }
+:root.light .macro-seg-neutral { background: #cbd5e1; color: #334155; }
+:root.light .macro-seg-bullish { background: #16a34a; color: #ffffff; }
+
+:root.light .status-aligned { color: #15803d; }
+:root.light .status-diverge { color: #b91c1c; }
 
 :root.light .stance-risk-on          { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
 :root.light .stance-defensive        { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; }

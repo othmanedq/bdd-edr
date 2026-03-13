@@ -101,7 +101,7 @@ export default function AssetPositioning() {
         <div className="flex items-center gap-5">
           <span
             className="uppercase tracking-widest"
-            style={{ fontSize: '10px', fontWeight: 600, color: '#6b7280' }}
+            style={{ fontSize: '10px', fontWeight: 600, color: 'var(--ds-muted)' }}
           >
             Position
           </span>
@@ -110,7 +110,7 @@ export default function AssetPositioning() {
             { v: 'N',  cls: 'badge-n',  lbl: 'Neutral' },
             { v: 'UW', cls: 'badge-uw', lbl: 'Underweight' },
           ].map(({ v, cls, lbl }) => (
-            <span key={v} className="flex items-center gap-2" style={{ fontSize: '13px', color: '#94a3b8' }}>
+            <span key={v} className="flex items-center gap-2" style={{ fontSize: '13px', color: 'var(--ds-muted)' }}>
               <span className={`badge ${cls}`}>{v}</span>
               {lbl}
             </span>
@@ -139,7 +139,7 @@ export default function AssetPositioning() {
       {/* Table */}
       <div
         className="rounded-lg overflow-hidden"
-        style={{ border: '1px solid #1e2d45', marginTop: 4 }}
+        style={{ border: '1px solid var(--ds-border)', marginTop: 4, background: 'var(--ds-surface)' }}
       >
         <div className="overflow-x-auto">
           <table className="data-table" style={{ minWidth: 900 }}>
@@ -148,8 +148,8 @@ export default function AssetPositioning() {
                 <th
                   className="sticky left-0 z-10 text-left"
                   style={{
-                    background: '#0a0e1a',
-                    borderRight: '1px solid #1e2d45',
+                    background: 'var(--ds-bg)',
+                    borderRight: '1px solid var(--ds-border)',
                     width: 160,
                     padding: '10px 16px',
                   }}
@@ -180,8 +180,8 @@ export default function AssetPositioning() {
                 <td
                   className="sticky left-0 z-10"
                   style={{
-                    background: 'rgba(26,18,6,0.98)',
-                    borderRight: '1px solid #1e2d45',
+                    background: 'color-mix(in srgb, var(--ds-surface) 90%, #c9a84c 10%)',
+                    borderRight: '1px solid var(--ds-border)',
                     borderBottom: '2px solid #c9a84c',
                     padding: '10px 16px',
                   }}
@@ -233,19 +233,19 @@ export default function AssetPositioning() {
               {COMPETITORS.map((firm, i) => (
                 <tr
                   key={firm.id}
-                  style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)' }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#1a2235'}
-                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)'}
+                  style={{ background: i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--ds-hover)'}
+                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)'}
                 >
                   <td
                     className="sticky left-0 z-10"
                     style={{
-                      background: i % 2 === 0 ? '#111827' : 'rgb(18,24,40)',
-                      borderRight: '1px solid #1e2d45',
+                      background: i % 2 === 0 ? 'var(--ds-surface)' : 'var(--ds-elevated)',
+                      borderRight: '1px solid var(--ds-border)',
                       padding: '8px 16px',
                     }}
                   >
-                    <span style={{ fontSize: '13px', fontWeight: 500, color: '#f1f5f9' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--ds-text)' }}>
                       {firm.name}
                     </span>
                   </td>

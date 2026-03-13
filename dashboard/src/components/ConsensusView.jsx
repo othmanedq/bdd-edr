@@ -130,13 +130,13 @@ export default function ConsensusView() {
         {/* Asset Positioning table */}
         <div
           className="rounded-lg overflow-hidden"
-          style={{ border: '1px solid #1e2d45' }}
+          style={{ border: '1px solid var(--ds-border)', background: 'var(--ds-surface)' }}
         >
           <div
             className="px-4 py-3"
-            style={{ borderBottom: '1px solid #1e2d45', background: '#0d1524' }}
+            style={{ borderBottom: '1px solid var(--ds-border)', background: 'var(--ds-elevated)' }}
           >
-            <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#f1f5f9' }}>
+            <h3 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ds-text)' }}>
               Asset Positioning: EdRAM vs Street Consensus
             </h3>
           </div>
@@ -153,11 +153,11 @@ export default function ConsensusView() {
               {CONSENSUS_ASSET.map((row, i) => (
                 <tr
                   key={row.label}
-                  style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)' }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#1a2235'}
-                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)'}
+                  style={{ background: i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--ds-hover)'}
+                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)'}
                 >
-                  <td style={{ padding: '9px 16px', fontSize: '13px', fontWeight: 500, color: '#e2e8f0' }}>
+                  <td style={{ padding: '9px 16px', fontSize: '13px', fontWeight: 500, color: 'var(--ds-text)' }}>
                     {row.label}
                   </td>
                   <td className="text-center" style={{ padding: '7px 8px' }}>
@@ -178,13 +178,13 @@ export default function ConsensusView() {
         {/* Macro Sentiment table */}
         <div
           className="rounded-lg overflow-hidden"
-          style={{ border: '1px solid #1e2d45' }}
+          style={{ border: '1px solid var(--ds-border)', background: 'var(--ds-surface)' }}
         >
           <div
             className="px-4 py-3"
-            style={{ borderBottom: '1px solid #1e2d45', background: '#0d1524' }}
+            style={{ borderBottom: '1px solid var(--ds-border)', background: 'var(--ds-elevated)' }}
           >
-            <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#f1f5f9' }}>
+            <h3 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ds-text)' }}>
               Macro Sentiment: EdRAM vs Street Consensus
             </h3>
           </div>
@@ -201,11 +201,11 @@ export default function ConsensusView() {
               {CONSENSUS_MACRO.map((row, i) => (
                 <tr
                   key={row.label}
-                  style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)' }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#1a2235'}
-                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(26,34,53,0.3)'}
+                  style={{ background: i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--ds-hover)'}
+                  onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'var(--ds-elevated)'}
                 >
-                  <td style={{ padding: '9px 16px', fontSize: '13px', fontWeight: 500, color: '#e2e8f0' }}>
+                  <td style={{ padding: '9px 16px', fontSize: '13px', fontWeight: 500, color: 'var(--ds-text)' }}>
                     {row.label}
                   </td>
                   <td className="text-center" style={{ padding: '7px 8px' }}>
@@ -230,14 +230,14 @@ export default function ConsensusView() {
           style={{
             fontSize: '15px',
             fontWeight: 600,
-            color: '#f1f5f9',
+            color: 'var(--ds-text)',
           }}
         >
           Risk Perception Comparison
         </h3>
         <div
           className="rounded-lg overflow-hidden"
-          style={{ border: '1px solid #1e2d45' }}
+          style={{ border: '1px solid var(--ds-border)', background: 'var(--ds-surface)' }}
         >
           <table className="data-table">
             <thead>

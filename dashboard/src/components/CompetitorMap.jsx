@@ -11,6 +11,7 @@ import {
   TIER3_FIRMS,
 } from '../data.js';
 import { ArrowRightIcon } from './icons.jsx';
+import AMLogo from './AMLogo.jsx';
 
 /* ── Peer groups ──────────────────────────────────────────── */
 const PEER_GROUPS = [
@@ -40,7 +41,7 @@ function EdRAMCard() {
       <div className="flex items-start justify-between gap-4 flex-wrap">
         {/* Left side */}
         <div className="flex items-center gap-4">
-          <div className="logo-circle logo-gold text-lg font-black">EdR</div>
+          <AMLogo firm={EDRAM} size={42} fallbackClass="logo-gold" />
           <div>
             <div className="flex items-center gap-3 flex-wrap">
               <span className="text-gold font-bold text-lg">EdRAM</span>
@@ -90,7 +91,7 @@ function CompCard({ firm, index, tier, onClick }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <div className={`logo-circle ${logoClass}`}>{firm.name[0]}</div>
+          <AMLogo firm={firm} size={40} fallbackClass={logoClass} />
           <div className="min-w-0">
             <div className="font-semibold text-sm truncate">{firm.name}</div>
             <div className="text-muted text-xs truncate mt-0.5">{firm.fullName}</div>
@@ -133,6 +134,9 @@ function CompCard({ firm, index, tier, onClick }) {
 /* ── Modal (simplified) ───────────────────────────────────── */
 function CompetitorModal({ firmMeta, onClose }) {
   const m = firmMeta.modal;
+  const sourceList = (m?.sources && m.sources.length > 0)
+    ? m.sources
+    : (m?.source ? [m.source] : []);
 
   const sentimentClass = (sentiment) => {
     if (sentiment === 'bullish') return 'badge badge-bullish';
@@ -154,10 +158,16 @@ function CompetitorModal({ firmMeta, onClose }) {
         <div className="p-6 border-b border-subtle">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="logo-circle logo-gold">{firmMeta.name[0]}</div>
+              <AMLogo firm={firmMeta} size={40} fallbackClass="logo-gold" />
               <div>
                 <div className="font-bold text-lg">{firmMeta.name}</div>
                 <div className="text-muted text-sm">{firmMeta.fullName}</div>
+                {firmMeta.stanceDetail && (
+                  <div className="text-xs text-muted mt-1 italic">{firmMeta.stanceDetail}</div>
+                )}
+                {firmMeta.tagline && (
+                  <div className="text-xs mt-1" style={{ color: '#d4b96e' }}>{firmMeta.tagline}</div>
+                )}
                 <div className="mt-1 flex items-center gap-2 flex-wrap">
                   <StanceBadge stance={firmMeta.stance} />
                   <span className="text-xs text-muted bg-elevated px-2 py-1 rounded-md">{firmMeta.aum}</span>
@@ -176,22 +186,35 @@ function CompetitorModal({ firmMeta, onClose }) {
         <div className="p-6 space-y-6">
           <section className="space-y-2">
             <div className="text-xs uppercase tracking-wider text-muted font-semibold">Source</div>
-            <div className="text-sm text-muted">
-              {m?.source?.url ? (
-                <a href={m.source.url} target="_blank" rel="noreferrer" className="text-gold hover:underline underline-offset-2">
-                  {m.source.label || firmMeta.outlookTitle}
-                </a>
-              ) : (
-                <span>{m?.source?.label || firmMeta.outlookTitle}</span>
-              )}
-              {m?.source?.asOf && <span className="ml-2 text-xs">({m.source.asOf})</span>}
-            </div>
+            {sourceList.length > 0 ? (
+              <div className="space-y-2">
+                {sourceList.map((src, idx) => (
+                  <div key={`${src.label || 'source'}-${idx}`} className="text-sm text-muted">
+                    {src?.url ? (
+                      <a href={src.url} target="_blank" rel="noreferrer" className="text-gold hover:underline underline-offset-2">
+                        {src.label || firmMeta.outlookTitle}
+                      </a>
+                    ) : (
+                      <span>{src?.label || firmMeta.outlookTitle}</span>
+                    )}
+                    {src?.asOf && <span className="ml-2 text-xs">({src.asOf})</span>}
+                    {src?.localFile && (
+                      <div className="text-xs text-muted mt-1">
+                        Fichier local: <span className="text-gold">{src.localFile}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-sm text-muted">{firmMeta.outlookTitle}</div>
+            )}
           </section>
 
           <section className="space-y-3">
             <div className="text-xs uppercase tracking-wider text-muted font-semibold">Macro Highlights</div>
             <div className="space-y-2">
-              {(m?.macroOutlook || []).slice(0, 6).map((row) => (
+              {(m?.macroOutlook || []).map((row) => (
                 <div key={row.indicator} className="flex items-center justify-between gap-3 bg-elevated rounded-md px-3 py-2 border border-subtle">
                   <div className="min-w-0">
                     <div className="text-sm font-medium text-white">{row.indicator}</div>
@@ -202,6 +225,13 @@ function CompetitorModal({ firmMeta, onClose }) {
               ))}
             </div>
           </section>
+
+          {firmMeta.note && (
+            <section className="rounded-lg p-3" style={{ background: 'rgba(148,163,184,0.08)', border: '1px solid rgba(148,163,184,0.2)' }}>
+              <div className="text-xs uppercase tracking-wider text-muted font-semibold mb-1">Note</div>
+              <p className="text-sm text-muted">{firmMeta.note}</p>
+            </section>
+          )}
 
           <section className="space-y-3">
             <div className="text-xs uppercase tracking-wider text-muted font-semibold">Key Themes</div>

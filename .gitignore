@@ -5,3 +5,4 @@
 # Dashboard build/deps
 dashboard/node_modules/
 dashboard/dist/
+data/

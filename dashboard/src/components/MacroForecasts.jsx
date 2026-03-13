@@ -60,21 +60,21 @@ function MacroPanel({ macroKey }) {
   return (
     <div
       className="rounded-lg"
-      style={{ background: '#111827', border: '1px solid #1e2d45' }}
+      style={{ background: 'var(--ds-surface)', border: '1px solid var(--ds-border)' }}
     >
       {/* Panel header */}
       <div
         className="px-4 py-3 flex items-center justify-between"
-        style={{ borderBottom: '1px solid #1e2d45' }}
+        style={{ borderBottom: '1px solid var(--ds-border)' }}
       >
-        <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#f1f5f9' }}>{label}</h3>
+        <h3 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--ds-text)' }}>{label}</h3>
       </div>
 
       {/* Consensus bar */}
       <div className="px-4 pt-4 pb-3">
         <div
           className="relative rounded-full overflow-hidden"
-          style={{ height: 26, background: '#020617', border: '1px solid #1e293b' }}
+          style={{ height: 26, background: 'var(--ds-bg)', border: '1px solid var(--ds-border)' }}
         >
           <div
             className="absolute inset-y-0"
@@ -82,14 +82,13 @@ function MacroPanel({ macroKey }) {
           />
           <div className="flex h-full w-full">
             <div
+              className="macro-seg macro-seg-bearish"
               style={{
                 width: `${segWidths.bearish}%`,
-                background: '#450a0a',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '10px',
-                color: '#fecaca',
                 whiteSpace: 'nowrap',
                 padding: '0 6px',
               }}
@@ -97,14 +96,13 @@ function MacroPanel({ macroKey }) {
               {counts.bearish} Bearish
             </div>
             <div
+              className="macro-seg macro-seg-neutral"
               style={{
                 width: `${segWidths.neutral}%`,
-                background: '#1f2937',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '10px',
-                color: '#9ca3af',
                 whiteSpace: 'nowrap',
                 padding: '0 6px',
               }}
@@ -112,14 +110,13 @@ function MacroPanel({ macroKey }) {
               {counts.neutral} Neutral
             </div>
             <div
+              className="macro-seg macro-seg-bullish"
               style={{
                 width: `${segWidths.bullish}%`,
-                background: '#052e16',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '10px',
-                color: '#6ee7b7',
                 whiteSpace: 'nowrap',
                 padding: '0 6px',
               }}
@@ -135,7 +132,7 @@ function MacroPanel({ macroKey }) {
         className="px-4 py-3 flex items-center gap-3"
         style={{
           background: 'rgba(201,168,76,0.07)',
-          borderBottom: '1px solid #1e2d45',
+          borderBottom: '1px solid var(--ds-border)',
         }}
       >
         <div
@@ -154,7 +151,7 @@ function MacroPanel({ macroKey }) {
               </span>
             )}
           </div>
-          <p className="mt-0.5 truncate" style={{ fontSize: '12px', color: '#94a3b8' }}>
+          <p className="mt-0.5 truncate" style={{ fontSize: '12px', color: 'var(--ds-text)', opacity: 0.75 }}>
             {edramMacro.label}
           </p>
         </div>
@@ -172,8 +169,8 @@ function MacroPanel({ macroKey }) {
                 key={firm.id}
                 className="flex items-center gap-2 px-2 py-1.5 rounded-md transition-colors"
                 style={{
-                  background: isTruePeer ? '#1a1f2e' : 'transparent',
-                  border: '1px solid rgba(30,45,69,0.6)',
+                  background: isTruePeer ? 'var(--ds-elevated)' : 'transparent',
+                  border: '1px solid var(--ds-border)',
                 }}
               >
                 <SentimentDot sentiment={m.sentiment} size={7} />
@@ -182,7 +179,7 @@ function MacroPanel({ macroKey }) {
                   style={{
                     fontSize: '11px',
                     fontWeight: 500,
-                    color: '#f1f5f9',
+                    color: 'var(--ds-text)',
                     maxWidth: 110,
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
@@ -194,7 +191,7 @@ function MacroPanel({ macroKey }) {
                 {m.value && (
                   <span
                     className="num shrink-0"
-                    style={{ fontSize: '11px', color: '#c9a84c', minWidth: 40 }}
+                    style={{ fontSize: '11px', color: 'var(--ds-gold-muted)', minWidth: 40 }}
                   >
                     {m.value}
                   </span>
@@ -203,7 +200,8 @@ function MacroPanel({ macroKey }) {
                   className="truncate"
                   style={{
                     fontSize: '11px',
-                    color: '#94a3b8',
+                    color: 'var(--ds-text)',
+                    opacity: 0.82,
                   }}
                 >
                   {m.label}
@@ -225,7 +223,7 @@ export default function MacroForecasts() {
       <div className="flex items-center gap-6 mb-6">
         <span
           className="uppercase tracking-widest"
-          style={{ fontSize: '10px', fontWeight: 600, color: '#6b7280' }}
+          style={{ fontSize: '10px', fontWeight: 600, color: 'var(--ds-muted)' }}
         >
           Sentiment
         </span>
@@ -234,7 +232,7 @@ export default function MacroForecasts() {
           { label: 'Neutral', sentiment: 'neutral' },
           { label: 'Bearish', sentiment: 'bearish' },
         ].map(({ label, sentiment }) => (
-          <span key={label} className="flex items-center gap-2" style={{ fontSize: '13px', color: '#94a3b8' }}>
+          <span key={label} className="flex items-center gap-2" style={{ fontSize: '13px', color: 'var(--ds-muted)' }}>
             <SentimentDot sentiment={sentiment} size={8} />
             {label}
           </span>
